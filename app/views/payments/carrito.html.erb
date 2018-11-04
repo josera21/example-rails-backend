@@ -1,0 +1,28 @@
+<h1><i class="fa fa-shopping-cart"></i> Mi carrito</h1>
+
+<ul class="list-group">
+	<% @payments.each do |payment| %>
+		<li class="list-group-item">
+			<div class="row">
+				<div class="col-md-8">
+					<%= payment.post.titulo %>
+				</div>
+				<div class="col-md-3 text-right">
+					<%= "#{payment.post.costo}USD" unless payment.post.costo.nil? %>
+				</div>
+			</div>
+		</li>	
+	<%end%>
+	<li class="list-group-item">
+		<div class="row">
+			<div class="col-md-8">Total</div>
+			<div class="col-md-3 text-right"><%= current_usuario.costo_compra_pendiente %>USD</div>
+		</div>
+	</li>
+</ul>
+
+<div class="text-center" data-no-turbolinks>
+	<%= link_to(payments_express_path, class:"btn btn-success btn-lg") do %>
+		<i class="fa fa-money"></i> Pagar
+	<% end %>
+</div>

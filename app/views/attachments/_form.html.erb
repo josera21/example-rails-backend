@@ -1,0 +1,28 @@
+<%= form_with(model: attachment, local: true) do |form| %>
+  <% if attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attachment.errors.count, "error") %> prohibited this attachment from being saved:</h2>
+
+      <ul>
+      <% attachment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :archivo %>
+    <%= form.file_field :archivo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_id, "Post"%>
+    <% # 1er parametro: a que post pertenece, 2do todos los post en el select, 3ro el value del select, 4to el label que saldra en el select %>
+    <%= form.collection_select :post_id, Post.all, :id, :titulo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

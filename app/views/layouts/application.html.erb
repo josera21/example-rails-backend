@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CursoBackend</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<p class="notice" style="<%= "display:none;" if notice.nil? %>"><%= notice %></p>
+    <p class="alert" style="<%= "display:none;" if alert.nil? %>"><%= alert %></p>
+    <%= render "partials/header" %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<h1>Posts</h1>
+
+<ul class="list-group">
+  <% @posts.each do |post| %>
+    <li class="list-group-item">
+      <%= link_to post.titulo, post %>
+    </li>
+  <% end %>
+</ul>
+
+<% if usuario_signed_in? %>
+  <%= link_to 'Crear post', new_post_path, class:"btn btn-primary" %>
+<% end %>

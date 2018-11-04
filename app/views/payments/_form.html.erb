@@ -1,0 +1,24 @@
+<%= form_with(model: payment, local: true) do |form| %>
+	<% if post.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(payment.errors.count, "error") %> evitaron que el pago se guardara:</h2>
+
+	      <ul>
+	      <% post.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+  	<% end %>
+
+	<div class="field">
+		<%= form.hidden_field :post_id, value: post.id %>
+	</div>
+
+	<div class="actions">
+		<%= content_tag :button, type: :submit, class:"btn btn-success" do %>
+			<i class="fa fa-shopping-cart"></i> Comprar
+		<% end %>
+	</div>
+
+<% end %>

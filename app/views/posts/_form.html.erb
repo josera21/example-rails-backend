@@ -1,0 +1,38 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo, id: :post_titulo, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :archivo%>
+    <%= form.file_field :archivo, class:"form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :costo %>
+    <!-- el step es para que html5 permita los puntos en un campo numerico-->
+    <%= form.number_field :costo, class:"form-control", step: "any" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :contenido %>
+    <%= form.text_area :contenido, id: :post_contenido, class:"form-control"%>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit "Subir post", class:"btn btn-success"%>
+  </div>
+<% end %>
